@@ -23,7 +23,7 @@ cargo new hello_rlib
 
 编写 src/main.rs
 
-```r
+```rust
 // 导入 test_rlib
 // 不过当前会报错，这个没事，后面走完流程就没事了
 extern crate test_rlib;
@@ -37,7 +37,7 @@ fn main() {
 
 Cargo.toml package 模块加上 build.rs, 并且增加 test_rlib 工作成员
 
-```
+```toml
 [package]
 name = "hello_rust"
 version = "0.1.0"
@@ -54,7 +54,7 @@ members = [
 
 项目根目录下创建 build.rs 文件(编译过C这些的同学应该不陌生)，并编写以下代码
 
-```r
+```rust
 fn main() {
 	// .rlib 路径
     println!("cargo:rustc-link-search=./target/debug/");
@@ -69,7 +69,7 @@ cargo new test_rlib --lib
 
 编写 test_rlib/src/lib.rs 代码
 
-```
+```rust
 pub fn test() {
     println!("hello test");
 }
